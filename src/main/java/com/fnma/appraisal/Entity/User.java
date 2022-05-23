@@ -9,5 +9,6 @@ public class User {
     private String userName;
     private String password;
     private String roll; //Bank or Appraiser
+    private String authorities; //ROLE_BANK or ROLE_APPRAISER
 
 }
