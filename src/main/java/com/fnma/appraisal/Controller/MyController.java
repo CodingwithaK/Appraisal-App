@@ -35,8 +35,8 @@ public class MyController {
         return this.appraisalService.getAllAppraisal();
     }
     @GetMapping("/appraisals/{appraisalID}")
-    public Appraisal getappraisal(@PathVariable String empID){
-        return this.appraisalService.getAppraisalByID(Integer.parseInt(empID));
+    public Appraisal getappraisal(@PathVariable String appraisalID){
+        return this.appraisalService.getAppraisalByID(Integer.parseInt(appraisalID));
     }
     @PostMapping("/appraisals")
     public Appraisal addappraisal(@RequestBody Appraisal appraisal){
@@ -58,8 +58,8 @@ public class MyController {
         return this.propertyService.getAllProperty();
     }
     @GetMapping("/propertys/{propertyID}")
-    public Property getproperty(@PathVariable String empID){
-        return this.propertyService.getPropertyByID(Integer.parseInt(empID));
+    public Property getproperty(@PathVariable String propertyID){
+        return this.propertyService.getPropertyByID(Integer.parseInt(propertyID));
     }
     @PostMapping("/propertys")
     public Property addproperty(@RequestBody Property property){
@@ -81,8 +81,8 @@ public class MyController {
         return this.userService.getAllUsers();
     }
     @GetMapping("/users/{userID}")
-    public User getuser(@PathVariable String empID){
-        return this.userService.getUserByID(Integer.parseInt(empID));
+    public User getuser(@PathVariable String userID){
+        return this.userService.getUserByID(Integer.parseInt(userID));
     }
     @PostMapping("/users")
     public User adduser(@RequestBody User user){
