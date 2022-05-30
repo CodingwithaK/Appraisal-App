@@ -26,7 +26,7 @@ public class MyController {
 
     @GetMapping("/")
     public String home(){
-        return "<HTML><H1>Welcome to Appraisal Application</H1><</HTML>";
+        return "<HTML><H1>Welcome to Appraisal Application</H1></HTML>";
     }
 
     // Appraisal API
