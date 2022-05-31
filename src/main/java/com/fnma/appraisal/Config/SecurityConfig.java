@@ -4,22 +4,24 @@ package com.fnma.appraisal.Config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.web.DefaultSecurityFilterChain;
+
+import org.springframework.security.web.SecurityFilterChain;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hibernate.criterion.Restrictions.and;
 
+@EnableWebSecurity
 @Configuration
 public class SecurityConfig {
 
@@ -36,12 +38,12 @@ public class SecurityConfig {
         return new InMemoryUserDetailsManager(userDetails);
     }
     @Bean
-    public DefaultSecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("appraisals/post/*").hasAuthority("ROLE_APPRAISER")
-                .antMatchers("appraisals/*").permitAll()
-                .antMatchers("propertys/*").permitAll()
+                .antMatchers("/appraiser").hasAuthority("ROLE_APPRAISER")
+                .antMatchers("/banker").hasAuthority("ROLE_BANK")
+                .antMatchers("/").hasAnyAuthority("ROLE_BANK","ROLE_APPRAISER")
                 .and().formLogin();
         return  http.build();
     }
