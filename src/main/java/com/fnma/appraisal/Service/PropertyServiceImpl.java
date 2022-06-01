@@ -2,6 +2,7 @@ package com.fnma.appraisal.Service;
 
 import com.fnma.appraisal.Dao.PropertyDao;
 import com.fnma.appraisal.Entity.Property;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.Optional;
 
 @Service
 public class PropertyServiceImpl implements PropertyService {
+    @Autowired
     private PropertyDao PropertyDao;
 
     @Override
