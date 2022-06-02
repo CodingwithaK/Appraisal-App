@@ -63,7 +63,6 @@ public class UserControllerTest {
                 "password",
                 "Bank",
                 "ROLE_BANK");
-        //doReturn(Optional.empty()).when(userDao).findById(13);
         doReturn(Optional.of(user)).when(userDao).findById(11);
 
         // Execute the userService call
