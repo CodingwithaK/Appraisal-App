@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -22,10 +23,11 @@ public class UserServiceImpl implements UserService {
     public User getUserByID(int UserID) {
         Optional<User> c = this.UserDao.findById(UserID);
         User user = null;
+
         if(c.isPresent()){
             user = c.get();
         } else {
-            throw new RuntimeException(" User not found for id :: " + UserID);
+            throw new NoSuchElementException(" User not found for id :: " + UserID);
         }
         return user;
 

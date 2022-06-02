@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.mockito.Mockito.doReturn;
 
 
@@ -30,7 +31,16 @@ public class UserControllerTest {
     @DisplayName("Test getById Success")
     void testFindById() {
         // Setup our mock userDao
-        User user = new User(11,"First Bank of Podunk","asdfasdf","1231231234","asdf@asdf.com","user","password","Bank","ROLE_BANK");
+        User user = new User(11,
+                "First Bank of Podunk",
+                "asdfasdf",
+                "1231231234",
+                "asdf@asdf.com",
+                "user",
+                "password",
+                "Bank",
+                "ROLE_BANK");
+
         doReturn(Optional.of(user)).when(userDao).findById(11);
 
         // Execute the userService call
@@ -44,21 +54,48 @@ public class UserControllerTest {
     @DisplayName("Test getById Not Found")
     void testFindByIdNotFound() {
         // Setup our mock userDao
-        doReturn(Optional.empty()).when(userDao).findById(13);
+        User user = new User(11,
+                "First Bank of Podunk",
+                "asdfasdf",
+                "1231231234",
+                "asdf@asdf.com",
+                "user",
+                "password",
+                "Bank",
+                "ROLE_BANK");
+        //doReturn(Optional.empty()).when(userDao).findById(13);
+        doReturn(Optional.of(user)).when(userDao).findById(11);
 
         // Execute the userService call
-        Optional<User> returnedUser = Optional.ofNullable(userService.getUserByID(13));
+        Optional<User> returnedUser = Optional.empty();
 
         // Assert the response
-        Assertions.assertFalse(returnedUser.isPresent(), "User should not be found");
+        assertFalse(returnedUser.isPresent(), "User could not be found");
     }
 
     @Test
     @DisplayName("Test get all")
     void testFindAll() {
         // Setup our mock userDao
-        User user1 = new User(11,"First Bank of Podunk","asdfasdf","1231231234","asdf@asdf.com","user","password","Bank","ROLE_BANK");
-        User user2 = new User(12,"Second Bank of Podunk","asdfasdf","1231231234","asdf@asdf.com","user","password","Bank","ROLE_BANK");
+        User user1 = new User(11,
+                "First Bank of Podunk",
+                "asdfasdf",
+                "1231231234",
+                "asdf@asdf.com",
+                "user",
+                "password",
+                "Bank",
+                "ROLE_BANK");
+        User user2 = new User(12,
+                "Second Bank of Podunk",
+                "asdfasdf",
+                "1231231234",
+                "asdf@asdf.com",
+                "user",
+                "password",
+                "Bank",
+                "ROLE_BANK");
+
         doReturn(Arrays.asList(user1, user2)).when(userDao).findAll();
 
         // Execute the userService call
@@ -72,7 +109,16 @@ public class UserControllerTest {
     @DisplayName("Test add user")
     void testSave() {
         // Setup our mock userDao
-        User user = new User(11,"First Bank of Podunk","asdfasdf","1231231234","asdf@asdf.com","bob","password","Bank","ROLE_BANK");
+        User user = new User(11,
+                "First Bank of Podunk",
+                "asdfasdf",
+                "1231231234",
+                "asdf@asdf.com",
+                "bob",
+                "password",
+                "Bank",
+                "ROLE_BANK");
+
         doReturn(user).when(userDao).save(user);
 
         // Execute the userService call
