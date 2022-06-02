@@ -11,7 +11,7 @@ import static javax.persistence.GenerationType.AUTO;
 @Table(name="appraisal")
 public class Appraisal {
     @Id
-    @GeneratedValue(strategy = AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int appraisalID;
     @ManyToOne
     @JoinColumn(name = "property")
@@ -24,8 +24,7 @@ public class Appraisal {
     private User appraiser;
     private String status; // request, rejected, in process, completed
     private Date appraisalDate;
-    @OneToMany()
-    @JoinColumn(name = "comparitives")
+    @ManyToMany()
     private Set<Property> comparitives;
     private String assessment;
     private float appraisedValue;
