@@ -14,7 +14,7 @@ public class PropertyServiceImpl implements PropertyService {
     private PropertyDao PropertyDao;
 
     @Override
-    public List<Property> getAllProperty() {
+    public List<Property> getAllPropertys() {
         return this.PropertyDao.findAll();
     }
 

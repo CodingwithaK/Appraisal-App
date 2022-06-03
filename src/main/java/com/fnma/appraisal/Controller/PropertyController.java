@@ -15,8 +15,8 @@ public class PropertyController {
     // Property API
 
     @GetMapping ("/propertys")
-    public List<Property> getAllPropertys(){
-        return this.propertyService.getAllProperty();
+    public List<Property> getAllProperty(){
+        return this.propertyService.getAllPropertys();
     }
     @GetMapping("/propertys/{propertyID}")
     public Property getproperty(@PathVariable String propertyID){
