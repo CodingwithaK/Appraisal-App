@@ -41,6 +41,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
+                .antMatchers("/**").permitAll()
                 .antMatchers("/appraiser").hasAuthority("ROLE_APPRAISER")
                 .antMatchers("/banker").hasAuthority("ROLE_BANK")
                 .antMatchers("/").hasAnyAuthority("ROLE_BANK","ROLE_APPRAISER")

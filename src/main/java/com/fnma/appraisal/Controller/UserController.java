@@ -16,8 +16,8 @@ public class UserController {
     // User API
 
     @GetMapping ("/users")
-    public List<User> getUser(){
-        return this.userService.getAllUsers();
+    public List<User> getAllUser(){
+        return this.userService.getAllUser();
     }
     @GetMapping("/users/{userID}")
     public User getuser(@PathVariable String userID){

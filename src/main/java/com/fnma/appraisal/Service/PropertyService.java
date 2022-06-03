@@ -5,7 +5,7 @@ import com.fnma.appraisal.Entity.Property;
 import java.util.List;
 
 public interface PropertyService {
-    List<Property> getAllProperty();
+    List<Property> getAllPropertys();
     Property getPropertyByID(int propertyID);
     Property addProperty(Property property);
     Property updateProperty(Property property);
